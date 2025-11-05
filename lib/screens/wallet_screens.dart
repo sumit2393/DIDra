@@ -40,7 +40,7 @@ class WalletDashboardScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
               ),
               child: ListTile(
-                title: const Text('Public Address'),
+                title: const Text('wallet Public Address'),
                 subtitle: Text(model.publicAddress ?? '-'),
                 trailing: IconButton(
                   icon: const Icon(Icons.copy),
@@ -79,7 +79,7 @@ class WalletDashboardScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
               ),
               child: ListTile(
-                title: const Text('DID Identifier'),
+                title: const Text('Crytographic DID Identifier'),
                 subtitle: Text(model.did ?? '-'),
               ),
             ),

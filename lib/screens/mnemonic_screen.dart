@@ -18,6 +18,8 @@ class MnemonicScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () async {
                 await model.createIdentity();
+                model.isWalletCreated = true;
+                model.notifyListeners(); // Update wallet status
               },
               child: const Text('Generate Mnemonic'),
             ),
@@ -36,18 +38,21 @@ class MnemonicScreen extends StatelessWidget {
                 ),
               ),
             const Spacer(),
-            ElevatedButton(
-              onPressed: model.mnemonic == null
-                  ? null
-                  : () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const WalletDashboardScreen(),
-                        ),
-                      );
-                    },
-              child: const Text('Continue to Dashboard'),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 50),
+              child: ElevatedButton(
+                onPressed: model.mnemonic == null
+                    ? null
+                    : () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const WalletDashboardScreen(),
+                          ),
+                        );
+                      },
+                child: const Text('Continue to Dashboard'),
+              ),
             ),
           ],
         ),

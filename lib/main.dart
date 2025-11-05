@@ -10,6 +10,7 @@ Future<void> main() async {
   await dotenv.load(fileName: ".env");
 
   final identityProvider = IdentityModel();
+  await identityProvider.init();
   // final hasWallet = await identityProvider.hasExistingWallet();
 
   runApp(

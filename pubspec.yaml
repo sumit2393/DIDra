@@ -45,6 +45,7 @@ dependencies:
   convert:
   flutter_secure_storage: 
   flutter_dotenv: 
+  bs58: ^1.0.2
 
 dev_dependencies:
   flutter_test:
