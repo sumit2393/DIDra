@@ -15,8 +15,18 @@ class WalletDashboardScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Wallet'),
+        title: const Text('DappPay'),
         actions: [
+          IconButton(
+            icon: Icon(
+              context.watch<IdentityModel>().isDark
+                  ? Icons.wb_sunny
+                  : Icons.dark_mode,
+            ),
+            onPressed: () {
+              context.read<IdentityModel>().toggleTheme();
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () async {
@@ -68,7 +78,7 @@ class WalletDashboardScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Card(
-              color: Colors.indigo.shade50,
+              color: Theme.of(context).cardColor,
               elevation: 3,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),

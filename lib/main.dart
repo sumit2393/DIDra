@@ -15,7 +15,10 @@ Future<void> main() async {
 
   runApp(
     MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => identityProvider)],
+      providers: [
+        ChangeNotifierProvider(create: (_) => identityProvider),
+        ChangeNotifierProvider(create: (_) => identityProvider),
+      ],
       child: const MyApp(),
     ),
   );
@@ -28,9 +31,29 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = Provider.of<IdentityModel>(context);
     return MaterialApp(
-      title: 'DID Wallet',
-      theme: ThemeData(primarySwatch: Colors.deepPurple),
+      title: 'DappPay',
       debugShowCheckedModeBanner: false,
+      themeMode: provider.themeMode,
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primarySwatch: Colors.indigo,
+        scaffoldBackgroundColor: Colors.white,
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.indigo,
+        scaffoldBackgroundColor: Colors.black, // 👈 Dark background
+        cardColor: const Color(0xFF1E1E1E), // 👈 Slightly lighter card
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.black,
+          foregroundColor: Colors.white,
+        ),
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(color: Colors.white),
+          bodyLarge: TextStyle(color: Colors.white),
+        ),
+        iconTheme: const IconThemeData(color: Colors.white),
+      ),
       home: provider.isWalletCreated
           ? const WalletDashboardScreen()
           : const CreateWalletScreen(),

@@ -23,6 +23,14 @@ class IdentityModel extends ChangeNotifier {
   bool isWalletCreated = false;
   EthPrivateKey? credentials; // 👈 track if wallet exists
 
+  bool isDark = false;
+
+  ThemeMode get themeMode => isDark ? ThemeMode.dark : ThemeMode.light;
+  void toggleTheme() {
+    isDark = !isDark;
+    notifyListeners();
+  }
+
   Future<void> init() async {
     try {
       // ✅ Load RPC from .env
