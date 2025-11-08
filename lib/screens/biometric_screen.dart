@@ -2,7 +2,6 @@ import 'package:dapp/provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:provider/provider.dart';
-
 import 'mnemonic_screen.dart';
 
 class CreateWalletScreen extends StatelessWidget {

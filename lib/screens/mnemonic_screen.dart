@@ -19,7 +19,7 @@ class MnemonicScreen extends StatelessWidget {
               onPressed: () async {
                 await model.createIdentity();
                 model.isWalletCreated = true;
-                model.notifyListeners(); // Update wallet status
+                // model.notifyListeners(); // Update wallet status
               },
               child: const Text('Generate Mnemonic'),
             ),

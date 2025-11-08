@@ -1,8 +1,10 @@
 import 'package:dapp/provider/provider.dart';
 import 'package:dapp/screens/biometric_screen.dart';
+import 'package:dapp/screens/send_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:web3dart/web3dart.dart';
+import 'package:flutter/services.dart';
 
 class WalletDashboardScreen extends StatelessWidget {
   const WalletDashboardScreen({super.key});
@@ -40,14 +42,26 @@ class WalletDashboardScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
               ),
               child: ListTile(
-                title: const Text('wallet Public Address'),
+                title: const Text('Wallet Public Address'),
                 subtitle: Text(model.publicAddress ?? '-'),
                 trailing: IconButton(
                   icon: const Icon(Icons.copy),
-                  onPressed: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Address copied')),
-                    );
+                  onPressed: () async {
+                    if (model.publicAddress != null &&
+                        model.publicAddress!.isNotEmpty) {
+                      await Clipboard.setData(
+                        ClipboardData(text: model.publicAddress!),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Address copied to clipboard'),
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('No address to copy')),
+                      );
+                    }
                   },
                 ),
               ),
@@ -72,17 +86,25 @@ class WalletDashboardScreen extends StatelessWidget {
                 ),
               ),
             ),
+
             const SizedBox(height: 16),
-            Card(
-              elevation: 3,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: ListTile(
-                title: const Text('Crytographic DID Identifier'),
-                subtitle: Text(model.did ?? '-'),
-              ),
+            ElevatedButton.icon(
+              icon: const Icon(Icons.send),
+              label: const Text("Send Token"),
+              onPressed: () {
+                showDialog(context: context, builder: (_) => SendDialog());
+              },
             ),
+            // Card(
+            //   elevation: 3,
+            //   shape: RoundedRectangleBorder(
+            //     borderRadius: BorderRadius.circular(16),
+            //   ),
+            //   child: ListTile(
+            //     title: const Text('Crytographic DID Identifier'),
+            //     subtitle: Text(model.did ?? '-'),
+            //   ),
+            // ),
           ],
         ),
       ),
