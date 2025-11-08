@@ -1,4 +1,4 @@
-# 🪪 DID Wallet — Flutter + Dart
+# 🪪 Flutter Web3 Wallet – Send & Receive Crypto on Testnet
 
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-blue.svg)]()
 [![Dart](https://img.shields.io/badge/Dart-2.x-blue.svg)]()
