@@ -26,7 +26,7 @@ It helps developers understand the basics of decentralized identity, key managem
 ✅ Generate **BIP-39 mnemonic** (12/24 words)  
 ✅ Derive **HD private/public keys** and **Ethereum-compatible address**  
 ✅ Create a DID identifier like `did:ethr:0xYourAddress`  
-✅ Connect to **Ankr RPC** (Ethereum / Polygon / BSC etc.)  
+✅ Connect to **Alchemy RPC** (Ethereum / Sepolia)  
 ✅ Fetch and display on-chain **balance**  
 ✅ Securely store private keys using **flutter_secure_storage**  
 ✅ Clean architecture — easy to extend and integrate
